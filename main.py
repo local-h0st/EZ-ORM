@@ -7,13 +7,16 @@ import EZORM
 db = EZORM.Database('data.db', using_memory=True)
 
 table_user = EZORM.Table(database=db, table_name='user')
-table_user.addColumn(column_name='username', column_type='varchar(10)')
+table_user.addColumn(column_name='username', column_type='str(10)')
 
 table_comment = EZORM.Table(database=db, table_name='comment')
-table_comment.addColumn(column_name='user_comments', column_type='varchar(10)')
-table_comment.addColumn(column_name='belongs_to_whom', column_type='varchar(100)')
+table_comment.addColumn(column_name='user_comments', column_type='str(10)')
+table_comment.addColumn(column_name='belongs_to_whom', column_type='str(100)')
 
 db.commitChange()
+
+table_user.insertRecord(username='localh0st')
+
 
 db.exec_sql("select * from user")
 # db.exec_sql("insert into user (id, username) values (1, 'localh0st')")

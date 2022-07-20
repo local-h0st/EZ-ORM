@@ -12,5 +12,5 @@ database:<in memory>
 ```
 
 ## TODO
-* insert没写完
+* insert没写完,要check类型，生成对应的sql
 * 一堆没写
