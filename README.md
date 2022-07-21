@@ -1,5 +1,5 @@
 # EZ ORM - A Python-Sqlite ORM Framework
-## database structure:
+## test database structure in main.py :
 ```commandline
 database:<in memory>
     |---- table:user
@@ -11,6 +11,25 @@ database:<in memory>
                 |---- column:belongs_to_whom
 ```
 
+## Quick start:
+两个文件`EZORM.py`和`EZORM_assistance.py`需要一起放在项目目录下
+```commandline
+import EZORM
+
+db = EZORM.Database('data.db', using_memory=True)
+new_table = EZORM.Table(database=db, table_name='user')
+new_table.addColumn(column_name='username', column_type='str(10)')
+
+new_table.insertRecord(username='localh0st')
+
+db.commitChange()
+
+result = new_table.selectRecord('*', username='localh0st')
+print(result)
+```
+
+
 ## TODO
-* insert没写完,要check类型，生成对应的sql
-* 一堆没写
+* select建议返回结果的时候也返回self.columns
+* delete没写完，update没写
+* 联合查询union没写
